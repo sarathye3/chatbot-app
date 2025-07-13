@@ -59,6 +59,38 @@ export const AI_MODELS = {
     description: 'Most powerful for complex tasks',
     maxTokens: 200000,
     supportStreaming: true
+  },
+  'llama3-8b-8192': {
+    id: 'llama3-8b-8192',
+    name: 'Llama 3 8B',
+    provider: 'Groq',
+    description: 'Fast and efficient open-source model',
+    maxTokens: 8192,
+    supportStreaming: true
+  },
+  'llama3-70b-8192': {
+    id: 'llama3-70b-8192',
+    name: 'Llama 3 70B',
+    provider: 'Groq',
+    description: 'Powerful open-source model for complex tasks',
+    maxTokens: 8192,
+    supportStreaming: true
+  },
+  'mixtral-8x7b-32768': {
+    id: 'mixtral-8x7b-32768',
+    name: 'Mixtral 8x7B',
+    provider: 'Groq',
+    description: 'High-performance mixture of experts model',
+    maxTokens: 32768,
+    supportStreaming: true
+  },
+  'gemma-7b-it': {
+    id: 'gemma-7b-it',
+    name: 'Gemma 7B IT',
+    provider: 'Groq',
+    description: 'Google\'s instruction-tuned model',
+    maxTokens: 8192,
+    supportStreaming: true
   }
 };
 

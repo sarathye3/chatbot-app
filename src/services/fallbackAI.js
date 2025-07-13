@@ -134,6 +134,67 @@ class FallbackAIService {
     }
   }
 
+  // Groq API integration
+  async sendToGroq(message, options = {}) {
+    if (!this.groqApiKey) {
+      throw new Error('Groq API key not configured');
+    }
+
+    const {
+      model = 'llama3-8b-8192',
+      temperature = 0.7,
+      maxTokens = 1000,
+      systemPrompt = 'You are a helpful AI assistant.'
+    } = options;
+
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), this.defaultTimeout);
+
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${this.groqApiKey}`,
+          'Content-Type': 'application/json'
+        },
+        signal: controller.signal,
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: message }
+          ],
+          temperature,
+          max_tokens: maxTokens
+        })
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(`Groq API error: ${response.status} - ${errorData.error?.message || response.statusText}`);
+      }
+
+      const data = await response.json();
+      
+      return {
+        success: true,
+        provider: 'groq',
+        model,
+        text: data.choices[0]?.message?.content || 'No response generated',
+        usage: data.usage,
+        timestamp: new Date()
+      };
+
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        throw new Error('Groq request timed out');
+      }
+      throw error;
+    }
+  }
+
   // Generic fallback method that routes to the appropriate AI service
   async sendMessage(message, provider, options = {}) {
     switch (provider.toLowerCase()) {
@@ -145,6 +206,10 @@ class FallbackAIService {
       case 'claude':
       case 'anthropic':
         return await this.sendToClaude(message, options);
+        
+      case 'groq':
+      case 'llama':
+        return await this.sendToGroq(message, options);
         
       default:
         throw new Error(`Unsupported AI provider: ${provider}`);
@@ -162,6 +227,10 @@ class FallbackAIService {
       case 'claude':
       case 'anthropic':
         return !!this.claudeApiKey;
+        
+      case 'groq':
+      case 'llama':
+        return !!this.groqApiKey;
         
       default:
         return false;
@@ -185,6 +254,14 @@ class FallbackAIService {
         id: 'claude',
         name: 'Anthropic Claude',
         models: ['claude-3-haiku-20240307', 'claude-3-sonnet-20240229', 'claude-3-opus-20240229']
+      });
+    }
+    
+    if (this.groqApiKey) {
+      providers.push({
+        id: 'groq',
+        name: 'Groq',
+        models: ['llama3-8b-8192', 'llama3-70b-8192', 'mixtral-8x7b-32768', 'gemma-7b-it']
       });
     }
     
