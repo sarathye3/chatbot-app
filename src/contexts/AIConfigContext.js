@@ -141,7 +141,7 @@ export const AIConfigProvider = ({ children }) => {
     }
     
     return {
-      model: 'gpt-3.5-turbo',
+      model: 'llama3-8b-8192',
       temperature: 0.7,
       maxTokens: 1000,
       topP: 1.0,
@@ -195,7 +195,7 @@ export const AIConfigProvider = ({ children }) => {
 
   const resetToDefaults = () => {
     setConfig({
-      model: 'gpt-3.5-turbo',
+      model: 'llama3-8b-8192',
       temperature: 0.7,
       maxTokens: 1000,
       topP: 1.0,
