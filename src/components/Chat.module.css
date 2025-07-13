@@ -32,6 +32,8 @@
   background: #ffffff;
   min-height: 64px;
   z-index: 10;
+  position: sticky;
+  top: 0;
 }
 
 .headerTitle {
@@ -564,11 +566,17 @@
 @media (max-width: 767px) {
   .chatHeader {
     padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
   }
   
   .messagesInner {
     padding: 1.5rem 1rem;
     gap: 1rem;
+    padding-top: 5rem;
   }
   
   .messageContent {
@@ -577,6 +585,7 @@
   
   .inputContainer {
     padding: 1rem;
+    margin-bottom: env(safe-area-inset-bottom);
   }
   
   .scrollButton {
