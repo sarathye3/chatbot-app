@@ -1,0 +1,115 @@
+.actionsContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.actions {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: flex;
+  gap: 0.25rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.actions.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  color: #4a5568;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.actionButton:hover {
+  background: #f7fafc;
+  color: #2d3748;
+}
+
+.actionButton:active {
+  transform: scale(0.95);
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.actionButton.regenerating {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dark theme styles */
+[data-theme="dark"] .actions {
+  background: #2d3748;
+  border-color: #4a5568;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .actionButton {
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .actionButton:hover {
+  background: #4a5568;
+  color: #e2e8f0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .actions {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    margin-top: 0.5rem;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    justify-content: flex-end;
+  }
+
+  .actionButton {
+    width: 36px;
+    height: 36px;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+  }
+
+  [data-theme="dark"] .actionButton {
+    background: #4a5568;
+    border-color: #718096;
+  }
+}

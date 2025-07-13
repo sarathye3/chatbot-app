@@ -1,0 +1,488 @@
+/* Loading and error state styles */
+
+/* Message Loading */
+.messageLoading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 0.75rem;
+  margin: 0.5rem 0;
+}
+
+.loadingDots {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #667eea;
+  border-radius: 50%;
+  animation: pulse 1.4s ease-in-out infinite both;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes pulse {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.loadingText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.provider {
+  font-weight: 500;
+  color: #667eea;
+}
+
+.retry {
+  font-size: 0.75rem;
+  color: #a0aec0;
+}
+
+/* Connection Status */
+.connectionStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.connected {
+  background: #f0fff4;
+  color: #38a169;
+  border: 1px solid #9ae6b4;
+}
+
+.disconnected {
+  background: #fed7d7;
+  color: #e53e3e;
+  border: 1px solid #feb2b2;
+}
+
+.fallback {
+  background: #fefcbf;
+  color: #d69e2e;
+  border: 1px solid #faf089;
+}
+
+.checking {
+  background: #e6fffa;
+  color: #319795;
+  border: 1px solid #81e6d9;
+}
+
+.statusIcon {
+  font-size: 0.75rem;
+}
+
+.statusLabel {
+  font-weight: 500;
+}
+
+.statusDetails {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-left: auto;
+}
+
+/* Error Display */
+.errorDisplay {
+  background: #fed7d7;
+  border: 1px solid #feb2b2;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.errorContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.errorIcon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.errorMessage {
+  flex: 1;
+}
+
+.errorTitle {
+  font-weight: 600;
+  color: #c53030;
+  margin-bottom: 0.25rem;
+}
+
+.errorDetails {
+  font-size: 0.875rem;
+  color: #742a2a;
+  line-height: 1.4;
+}
+
+.errorActions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.retryButton {
+  background: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.retryButton:hover {
+  background: #c53030;
+}
+
+.dismissButton {
+  background: transparent;
+  color: #742a2a;
+  border: 1px solid #feb2b2;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dismissButton:hover {
+  background: #feb2b2;
+}
+
+/* Provider Switch Notification */
+.switchNotification {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #e6fffa;
+  border: 1px solid #81e6d9;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.switchIcon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.switchContent {
+  flex: 1;
+}
+
+.switchTitle {
+  font-weight: 600;
+  color: #319795;
+  margin-bottom: 0.25rem;
+}
+
+.switchDetails {
+  font-size: 0.875rem;
+  color: #2c7a7b;
+}
+
+/* Loading Spinner */
+.loadingSpinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.loadingSpinner.small .spinner {
+  width: 20px;
+  height: 20px;
+}
+
+.loadingSpinner.medium .spinner {
+  width: 32px;
+  height: 32px;
+}
+
+.loadingSpinner.large .spinner {
+  width: 48px;
+  height: 48px;
+}
+
+.spinner {
+  border: 3px solid #e2e8f0;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinnerMessage {
+  font-size: 0.875rem;
+  color: #4a5568;
+  text-align: center;
+}
+
+/* Service Status Grid */
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.serviceCard {
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.serviceName {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
+
+.serviceStatus {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.serviceStatus.success {
+  color: #38a169;
+}
+
+.serviceStatus.failure {
+  color: #e53e3e;
+}
+
+.responseTime {
+  font-size: 0.75rem;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.serviceError {
+  font-size: 0.75rem;
+  color: #e53e3e;
+  margin-top: 0.25rem;
+  word-break: break-word;
+}
+
+/* Typing Indicator */
+.typingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border-radius: 0.75rem;
+  margin: 0.5rem 0;
+}
+
+.typingDots {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.typingDots span {
+  width: 6px;
+  height: 6px;
+  background: #a0aec0;
+  border-radius: 50%;
+  animation: typing 1.4s ease-in-out infinite both;
+}
+
+.typingDots span:nth-child(1) { animation-delay: -0.32s; }
+.typingDots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.typingText {
+  font-size: 0.875rem;
+  color: #718096;
+  font-style: italic;
+}
+
+/* Toast Notification */
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 0.5rem 0;
+  animation: toastIn 0.3s ease-out;
+  position: relative;
+  z-index: 1000;
+}
+
+@keyframes toastIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast.success {
+  background: #f0fff4;
+  border: 1px solid #9ae6b4;
+  color: #38a169;
+}
+
+.toast.error {
+  background: #fed7d7;
+  border: 1px solid #feb2b2;
+  color: #e53e3e;
+}
+
+.toast.warning {
+  background: #fefcbf;
+  border: 1px solid #faf089;
+  color: #d69e2e;
+}
+
+.toast.info {
+  background: #e6fffa;
+  border: 1px solid #81e6d9;
+  color: #319795;
+}
+
+.toastIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.toastMessage {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.toastClose {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: currentColor;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.toastClose:hover {
+  opacity: 1;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .messageLoading {
+  background: #4a5568;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .loadingText {
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .serviceCard {
+  background: #4a5568;
+  border-color: #718096;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .serviceName {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .typingIndicator {
+  background: #4a5568;
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .typingText {
+  color: #718096;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .serviceGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .errorActions {
+    flex-direction: column;
+  }
+  
+  .errorActions button {
+    width: 100%;
+  }
+  
+  .switchNotification {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

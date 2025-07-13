@@ -1,0 +1,828 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 800px;
+  height: 90vh;
+  max-height: 90vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: #718096;
+  transition: all 0.2s;
+}
+
+.closeButton:hover {
+  background: #f7fafc;
+  color: #2d3748;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #e2e8f0;
+  overflow-x: auto;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #718096;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: #4a5568;
+  background: #f7fafc;
+}
+
+.tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+  background: #f7fafc;
+}
+
+.tabIcon {
+  font-size: 1rem;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.section {
+  max-width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  flex-shrink: 0;
+}
+
+.description {
+  margin: 0 0 2rem 0;
+  color: #718096;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+
+.modelGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  flex: 1;
+  align-content: start;
+}
+
+.modelCard {
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8f9fa;
+}
+
+.modelCard:hover {
+  border-color: #cbd5e0;
+  background: #ffffff;
+}
+
+.modelCard.selected {
+  border-color: #667eea;
+  background: #f0f4ff;
+}
+
+.modelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.modelHeader h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.provider {
+  font-size: 0.75rem;
+  color: #667eea;
+  background: #e6f3ff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+
+.modelDescription {
+  margin: 0 0 0.75rem 0;
+  color: #718096;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.modelSpecs {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #a0aec0;
+}
+
+.sliderGroup {
+  margin-bottom: 2rem;
+}
+
+.sliderLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.temperatureLabel {
+  font-size: 0.875rem;
+  color: #667eea;
+  background: #f0f4ff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  font-weight: 400;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #e2e8f0;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #a0aec0;
+}
+
+.checkboxGroup {
+  margin-top: 1rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #667eea;
+}
+
+.personalityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex: 1;
+  align-content: start;
+}
+
+.personalityCard {
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.personalityCard:hover {
+  border-color: #cbd5e0;
+  background: #ffffff;
+}
+
+.personalityCard.selected {
+  border-color: #667eea;
+  background: #f0f4ff;
+}
+
+.personalityCard h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.personalityCard p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #718096;
+  line-height: 1.4;
+}
+
+.customPromptSection {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 2rem;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.customPromptSection h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.customPromptTextarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  resize: vertical;
+  font-family: inherit;
+  margin-bottom: 1rem;
+}
+
+.customPromptTextarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.advancedGrid {
+  display: grid;
+  gap: 2rem;
+  flex: 1;
+  align-content: start;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  background: #f8f9fa;
+}
+
+.footerActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.resetButton {
+  background: #fed7d7;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resetButton:hover {
+  background: #feb2b2;
+}
+
+.cancelButton {
+  background: #ffffff;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelButton:hover {
+  background: #f7fafc;
+}
+
+.saveButton {
+  background: #667eea;
+  color: #ffffff;
+  border: 1px solid #667eea;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: #5a67d8;
+}
+
+.saveButton:disabled {
+  background: #cbd5e0;
+  border-color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .modal {
+  background: #2d3748;
+}
+
+[data-theme="dark"] .header {
+  border-bottom-color: #4a5568;
+}
+
+[data-theme="dark"] .header h2 {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .closeButton {
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .closeButton:hover {
+  background: #4a5568;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .tabs {
+  border-bottom-color: #4a5568;
+}
+
+[data-theme="dark"] .tab {
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .tab:hover {
+  color: #e2e8f0;
+  background: #4a5568;
+}
+
+[data-theme="dark"] .tab.active {
+  color: #90cdf4;
+  background: #4a5568;
+  border-bottom-color: #90cdf4;
+}
+
+[data-theme="dark"] .section h3 {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .description {
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .modelCard {
+  background: #4a5568;
+  border-color: #718096;
+}
+
+[data-theme="dark"] .modelCard:hover {
+  background: #2d3748;
+  border-color: #a0aec0;
+}
+
+[data-theme="dark"] .modelCard.selected {
+  background: #1a2332;
+  border-color: #90cdf4;
+}
+
+[data-theme="dark"] .modelHeader h4 {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .modelDescription {
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .sliderLabel {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .temperatureLabel {
+  background: #1a2332;
+  color: #90cdf4;
+}
+
+[data-theme="dark"] .slider {
+  background: #4a5568;
+}
+
+[data-theme="dark"] .personalityCard {
+  background: #4a5568;
+  border-color: #718096;
+}
+
+[data-theme="dark"] .personalityCard:hover {
+  background: #2d3748;
+  border-color: #a0aec0;
+}
+
+[data-theme="dark"] .personalityCard.selected {
+  background: #1a2332;
+  border-color: #90cdf4;
+}
+
+[data-theme="dark"] .personalityCard h4 {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .personalityCard p {
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .customPromptSection {
+  border-top-color: #4a5568;
+}
+
+[data-theme="dark"] .customPromptSection h4 {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .customPromptTextarea {
+  background: #4a5568;
+  border-color: #718096;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .customPromptTextarea:focus {
+  border-color: #90cdf4;
+  box-shadow: 0 0 0 3px rgba(144, 205, 244, 0.2);
+}
+
+[data-theme="dark"] .footer {
+  background: #4a5568;
+  border-top-color: #718096;
+}
+
+[data-theme="dark"] .cancelButton {
+  background: #2d3748;
+  color: #e2e8f0;
+  border-color: #4a5568;
+}
+
+[data-theme="dark"] .cancelButton:hover {
+  background: #1a202c;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal {
+    height: 95vh;
+    max-height: 95vh;
+    min-height: 600px;
+  }
+  
+  /* Header adjustments for mobile */
+  .header {
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .header h2 {
+    font-size: 1.25rem;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .closeButton {
+    padding: 0.25rem;
+    flex-shrink: 0;
+  }
+  
+  /* Tabs adjustments for mobile */
+  .tabs {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+  
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    min-width: fit-content;
+  }
+  
+  .tabIcon {
+    font-size: 0.875rem;
+  }
+  
+  .content {
+    padding: 1rem;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+  
+  /* Section headers for mobile */
+  .section {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .section h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    flex-shrink: 0;
+  }
+  
+  .description {
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+  
+  .modelGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    flex: 1;
+  }
+  
+  .personalityGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    flex: 1;
+  }
+  
+  /* Advanced grid container */
+  .advancedGrid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Custom prompt section in personality tab */
+  .customPromptSection {
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+  
+  /* Model cards mobile adjustments */
+  .modelCard {
+    padding: 1rem;
+  }
+  
+  .modelHeader h4 {
+    font-size: 0.9rem;
+  }
+  
+  .provider {
+    font-size: 0.7rem;
+  }
+  
+  .modelDescription {
+    font-size: 0.8rem;
+  }
+  
+  .modelSpecs {
+    font-size: 0.7rem;
+  }
+  
+  /* Personality cards mobile adjustments */
+  .personalityCard {
+    padding: 0.875rem;
+  }
+  
+  .personalityCard h4 {
+    font-size: 0.9rem;
+  }
+  
+  .personalityCard p {
+    font-size: 0.8rem;
+  }
+  
+  .footer {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .footerActions {
+    width: 100%;
+    justify-content: stretch;
+  }
+  
+  .footerActions button {
+    flex: 1;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .overlay {
+    padding: 0.25rem;
+  }
+  
+  .modal {
+    height: 95vh;
+    max-height: 95vh;
+    min-height: 550px;
+    border-radius: 0.5rem;
+  }
+  
+  .header {
+    padding: 0.75rem;
+  }
+  
+  .header h2 {
+    font-size: 1.125rem;
+  }
+  
+  .tab {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  
+  .tabIcon {
+    font-size: 0.75rem;
+  }
+  
+  .content {
+    padding: 0.75rem;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+  
+  /* Extra small section headers */
+  .section {
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .section h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+  }
+  
+  .description {
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+  
+  /* Extra small model cards */
+  .modelCard {
+    padding: 0.75rem;
+  }
+  
+  .modelHeader h4 {
+    font-size: 0.85rem;
+  }
+  
+  .provider {
+    font-size: 0.65rem;
+    padding: 0.125rem 0.375rem;
+  }
+  
+  .modelDescription {
+    font-size: 0.75rem;
+  }
+  
+  .modelSpecs {
+    font-size: 0.65rem;
+  }
+  
+  /* Extra small personality cards */
+  .personalityCard {
+    padding: 0.75rem;
+  }
+  
+  .personalityCard h4 {
+    font-size: 0.85rem;
+    margin-bottom: 0.375rem;
+  }
+  
+  .personalityCard p {
+    font-size: 0.75rem;
+  }
+  
+  /* Custom prompt section */
+  .customPromptSection h4 {
+    font-size: 1rem;
+  }
+  
+  .customPromptTextarea {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .footer {
+    padding: 0.75rem;
+  }
+}
