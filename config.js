@@ -9,13 +9,13 @@ window.APP_CONFIG = {
   // Add your actual API keys here
   AI_PROVIDERS: {
     // Groq API Key - Get from https://console.groq.com/
-    GROQ_API_KEY: 'your-groq-api-key-here',
+    GROQ_API_KEY: null, // 'add-your-groq-key-here',
     
     // OpenAI API Key - Get from https://platform.openai.com/api-keys
-    OPENAI_API_KEY: null, // 'your-openai-api-key-here',
+    OPENAI_API_KEY: null, // 'add-your-openai-key-here',
     
     // Claude API Key - Get from https://console.anthropic.com/
-    CLAUDE_API_KEY: null, // 'your-claude-api-key-here',
+    CLAUDE_API_KEY: null, // 'add-your-claude-key-here',
   },
   
   // App Settings
